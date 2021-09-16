@@ -36,14 +36,14 @@ $$a = F/m$$
 
 So now you can extend the algorithm from the previous assignment to include the air friction:
 
-dt = 0.01
-t = 0, v = 0, x = 100
-repeat:
-    F := ??
-    a := F/m
-    x := x - v * dt  # update position (negative because we're going down)
-    v := v + a * dt  # update speed
-    t := t + dt      # update time
+    dt = 0.01
+    t = 0, v = 0, x = 100
+    repeat:
+        F := ??
+        a := F/m
+        x := x - v * dt  # update position (negative because we're going down)
+        v := v + a * dt  # update speed
+        t := t + dt      # update time
 
 ## Specification
 
