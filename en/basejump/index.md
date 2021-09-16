@@ -12,7 +12,9 @@ Although air resistance is dependent on the surface and mass of the object and t
 
 As always there are people trying to find the [limits](https://en.wikipedia.org/wiki/Speed_skydiving). Because he started his jump in an area where air pressure was incredibly low, Felix Baumgartner reached a record speed of 1357.64 km/hour, that will be very difficult to overcome.
 
-Because there was no air friction we could assume that the acceleration $$a$$ was constant. This is not the case anymore. The acceleration depends on the forces $$F$$ that work on the base jumper. The force of gravity $$F_{\rm gravity}$$ is constant:
+## The math
+
+In the previous assignment, because there was no air friction, we could assume that the acceleration $$a$$ was constant. This is not the case anymore. The acceleration depends on the forces $$F$$ that work on the base jumper. The force of gravity $$F_{\rm gravity}$$ is constant:
 
 $$F_{\rm gravity} = m \cdot 9.8$$
 
