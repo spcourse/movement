@@ -37,8 +37,8 @@ $$a = F/m$$
 So now you can extend the algorithm from the previous assignment to include the air friction:
 
     dt = 0.01
-    t = 0, v = 0, x = 100
-    repeat:
+    t = 0, v = 0, x = 1000
+    repeat as long x > 200:
         F := ??
         a := F/m
         x := x + v * dt  # update position
