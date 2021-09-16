@@ -1,11 +1,15 @@
 # Apple
 
-Write a program that describes the movement of an apple falling from a height of 100 meters.
+## Goal
+Write a program, called `apple.py`, that describes the movement of an apple falling from a height of 100 meters.
 
-    0.00 s til the apple hits the ground
-    000.0 km/h is the speed with which the apple hit the ground
-    0.00 s elapses before the apple moves 100 km/h
+## example
+The program should output something like this:
 
+    The apple hits the ground after ?.?? seconds with a speed of ???.?? km/h.
+    The apple accelerates to 100 km/h in ?.?? seconds.
+
+Where, of course, you should print actual values in stead of those question marks.
 
 ## Background
 
@@ -13,47 +17,80 @@ In physics a lot of research is done on problems that cannot be solved analytica
 
 When simulating some physical system you take small steps in time and calculate crudely what happened in between each step. An example of such a system might be the movement of an object. The trick is to make those steps in time as small as possible, which makes the movement increasingly "fluid" as you calculate each step. This task is perfectly suitable for a computer since it involves many (similar) steps. Eventually a simulation describes almost exactly what would actually happen in reality. At least, if the simulation makes use of correct premises and assumptions!
 
+So what do we need to know about the physics of a moving apple?
 
+For the rest of this exercise we assume that there is no air resistance, and that gravity pulls uniformly throughout any free fall.
 
-## Specification
+All object falling to earth (from a reasonable height) have an acceleration of $$9.8 m/s^2$$. This means every second the speed will increase by $$9.8 m/s$$.
 
-Create a file called `apple.py` and declare in it a function `apple()` that performs the necessary calculations. Make sure the results are `print`ed by this function:
+This means that the speed of the apple does depend on how long it has been falling. To compute the speed of the apple after a specific time interval, $$\Delta t$$ is given by this equation:
 
-1. After how many seconds does the apple hit the ground?
+$$v_{\rm new} = v_{\rm old} + a \cdot \Delta t$$
 
-2. At which speed (km/h) does the apple hit the ground?
+So, the new speed $$v_{\rm new}$$ is the old speed $$v_{\rm old}$$ plus the increase of speed $$a \cdot \Delta t$$
 
-3. After how many seconds does the apple have a speed of $$100$$ km/h? Is a falling apple therefore faster than a Bugatti Veyron $$2.46$$ seconds) or not?
+If the speed where constant, it would be very easy to also compute the change in height, but the speed isn't constant. What we will do is **assume that for a very small time interval $$\Delta t$$ the speed is constant**. When we do this we get:
 
-The output must be very precise and only the requested values may be printed like in the example above.
+$$x_{\rm new} = x_{\rm old} + v \cdot \Delta t$$
 
+So, the new height $$x_{\rm new}$$ is the old height $$x_{\rm old}$$ plus the increase of height $$v \cdot \Delta t$$.
 
-## Problem analysis
+Putting it all together we can use the following algorithm (pseudo code) to **approximate** the fall of the apple:
 
-![](GravityOverzicht.png)
+    dt = 0.01
+    t = 0, v = 0, x = 100, a = 9.8,
+    repeat:
+        x := x - v * dt # minus sign because we're going down
+        v := v + a * dt
+        t := t + dt
 
-Make sure your program takes small steps in time $$\Delta t=0.01$$ seconds) and keep track of the height of the apple ($$x$$) en of the speed with which the apple moves ($$v$$).
+Note that `dt`, the time interval, is set to a small value. If you make this smaller, the simulation will be more precise, but also slower.
 
-Perform for each step in time your calculation in the following order:
+## Part 1
 
-1. the force $$F$$ influencing the apple
-2. the gravitational acceleration $$a$$ the apple gains
-3. the new speed $$v$$ the apple gains, where $$v_{\rm new} = v + a \Delta t$$
-4. the new position $$x$$ the apple has, where $$x_{\rm new} = x + v \Delta t$$
+First let's see what happens with an apple that falls from a height of a 100 meters. After how many seconds and at what speed does the apple hit the ground?
 
-Step 1 and 2 can be combined, which is why you do not need to know the mass of the apple for this simulation!
+### Specification
 
-You should then have calculated all information needed of a certain point in time. Subsequently you can make an increment in time and repeat the cycle.
+Create a file called `apple.py` and declare in it a function `simulate_apple1(x, dt)` that performs the necessary calculations. The function accepts two parameters:
 
+- `x`: the starting height of the apple.
+- `dt`: the time increment of our simulation.
 
-## Hints
+The function should return two values:
 
-* Use the aforementioned formula and start the apple on x = $${\rm R_{earth}}$$ + 100 meters. If you want to know how high up the apple is, use h = x - $${\rm R_{earth}}$$.
+- The time elapsed when the apple hits the ground (in seconds).
+- The speed at which apple hits the ground (in km/h).
+
+Call the function with the parameters 100 and 0.01, and print the results
+
+### Hints
+
 * Be careful with the *sign* of the powers and speeds. You start with a positive $$x$$ and move towards $$x=0$$.
 * In this case you can also calculate the answers yourself using pen and paper.
-* First calculate everything in meters per second (m/s) and convert everything to kilometers per hour (km/h) for specification 2.
+* First calculate everything in meters per second (m/s) and convert everything to kilometers per hour (km/h) after the simulation is finished.
 
+## Part 1
+
+How quickly does a falling apple accelerate? Is that faster than a Bugatti Veyron?
+A Bugatti Veyron accelerates from 0 to 100km/h in [2.46](https://en.wikipedia.org/wiki/Bugatti_Veyron#Specifications_(all_variants)) seconds. Let's see how quickly the apple gets to that speed.
+
+### Specification
+
+Declare a function `simulate_apple2(dt)` that performs the necessary calculations. The function accepts one parameters:
+
+- `dt`: the time increment of our simulation.
+
+It should simulate the fall of the apple until it reaches a speed of 100 km/h. You don't need a height parameter, as you can just assume the apple is dropped from high enough that it won't hit the ground before it reaches this speed.
+
+The function should return one value:
+
+- The time elapsed (in seconds) before reaching a speed of 100km/h.
+
+Is it faster than the Bugatti?
 
 ## Testing
 
-	checkpy apple
+
+
+	<!-- checkpy apple -->
