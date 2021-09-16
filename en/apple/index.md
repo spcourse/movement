@@ -3,7 +3,7 @@
 ## Goal
 Write a program, called `apple.py`, that describes the movement of an apple falling from a height of 100 meters.
 
-## example
+## Example
 The program should output something like this:
 
     The apple hits the ground after ?.?? seconds with a speed of ???.?? km/h.
@@ -19,17 +19,21 @@ When simulating some physical system you take small steps in time and calculate 
 
 So what do we need to know about the physics of a moving apple?
 
-For the rest of this exercise we assume that there is no air resistance, and that gravity pulls uniformly throughout any free fall.
+To calculate the position of the apple $$x$$ at a given time $$t$$, we need to calculate some other properties. We need to figure out the speed $$v$$ of the apple changes over time. And to know the speed changes, we need to know the acceleration $$a$$.
 
-All object falling to earth (from a reasonable height) have an acceleration of $$9.8 m/s^2$$. This means every second the speed will increase by $$9.8 m/s$$.
+So how do all these four properties ($$x$$, $$v$$, $$a$$ and $$t$$) all depend on each other?
 
-This means that the speed of the apple does depend on how long it has been falling. To compute the speed of the apple after a specific time interval, $$\Delta t$$ is given by this equation:
+All object falling to earth have an acceleration of around $$9.8 m/s^2$$. This means every second the speed will increase by $$9.8 m/s$$.
+
+> This is only true if there is no air resistance and if gravity pulls uniformly throughout any free fall. Which is not the case, but we're going to assume it is.
+
+This means that the speed of the apple depends on how long it has been falling. To compute the speed of the apple after a specific time interval, $$\Delta t$$ is given by this equation:
 
 $$v_{\rm new} = v_{\rm old} + a \cdot \Delta t$$
 
 So, the new speed $$v_{\rm new}$$ is the old speed $$v_{\rm old}$$ plus the increase of speed $$a \cdot \Delta t$$
 
-If the speed where constant, it would be very easy to also compute the change in height, but the speed isn't constant. What we will do is **assume that for a very small time interval $$\Delta t$$ the speed is constant**. When we do this we get:
+If the speed were constant, it would be very easy to also compute the change in height, but the speed isn't constant. What we will do is **assume that for a very small time interval $$\Delta t$$ the speed is constant**. When we do this we get:
 
 $$x_{\rm new} = x_{\rm old} + v \cdot \Delta t$$
 
@@ -40,9 +44,9 @@ Putting it all together we can use the following algorithm (pseudo code) to **ap
     dt = 0.01
     t = 0, v = 0, x = 100, a = 9.8,
     repeat:
-        x := x - v * dt # minus sign because we're going down
-        v := v + a * dt
-        t := t + dt
+        x := x - v * dt  # update position (negative because we're going down)
+        v := v + a * dt  # update speed
+        t := t + dt      # update time
 
 Note that `dt`, the time interval, is set to a small value. If you make this smaller, the simulation will be more precise, but also slower.
 
