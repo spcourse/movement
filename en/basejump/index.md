@@ -41,7 +41,7 @@ So now you can extend the algorithm from the previous assignment to include the 
     repeat:
         F := ??
         a := F/m
-        x := x - v * dt  # update position (negative because we're going down)
+        x := x + v * dt  # update position
         v := v + a * dt  # update speed
         t := t + dt      # update time
 
