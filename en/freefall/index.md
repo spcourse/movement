@@ -12,7 +12,7 @@ $$F_{\rm gravity} = -G\cdot \sigma \cdot \frac{4}{3} \cdot \pi \cdot m \cdot r$$
 
 Where $$G$$ is the gravitational constant with the value of $$G = 6.67408e-11 m^3 / kg / s^2$$; $$\sigma$$ is the density of the earth, which is $$\sigma 5520 g/m^3$$; $$m$$ is the mass of the object that's falling in kilograms; and $$r$$ is the distance of the object to the center of the earth in meters.
 
-Or, as the put in the video, everything but $$r$$ is just a bunch of constants. The only thing that changes over time is $$r$$.
+Or, as they elegantly put it in the video, $$F_{\rm gravity}$ is a just some constant stuff times $$r$$. The only thing that changes over time is $$r$$.
 
 If we only consider the force of gravity (and no air drag or any other force), we can write the acceleration of the object:
 
@@ -21,9 +21,9 @@ a = \frac{F}{m} = \frac{F_{\rm gravity}}{m} = \frac{-G\cdot \sigma \cdot \frac{4
 = -G\cdot \sigma \cdot \frac{4}{3} \cdot \pi \cdot r
 $$
 
-In other words, we lose the $$m$$, so we don't need to know the mass of the object. Peter from the video jumping through the hole and our apple will accelerate at the exact same rate.
+In other words, we loose the $$m$$. We don't need to know the mass of the object. Peter from the video jumping through the hole and our apple will accelerate at the exact same rate.
 
-Using this equation above we can simulate the fall through the earth.
+Using this equation for the acceleration, we can simulate the fall through the earth.
 
 ## Specification
 Create a file `tunnel.py` and declare a function `simulate_ultimate_free_fall(r_start, dt)` in it. The function has 2 paramaters:
