@@ -1,40 +1,55 @@
 # Assignment: the ultimate free fall
 
-The apple from the previous assignment reached the surface after a little over 4 seconds. Imagine that exactly at the location where the apple was dropped, a tunnel was dug straight through the planet.
+The apple from the previous assignment reached the surface after a little over 4 seconds. Imagine that exactly at the location where the apple was dropped, a tunnel was dug straight through the planet. The problem with a free fall through the earth is that the gravitational pull of earth can not be considered constant anymore. At the surface of the earth you feel much more gravity than near the center.
 
-Write a function called `tunnel()` in a file called **tunnel.py** that describes the movement of the apple through earth. The apple moves along the $$x$$-axis, where $$x=0$$ in the center of the earth. The apple starts with a speed of $$0$$ at a height of $$0$$ meters above the surface of the earth. What exactly happens?
- 
-![](EarthHole.png)
+The following video explains the basic math behind this situation:
 
-## Output
+![embed](https://www.youtube.com/embed/urQCmMiHKQk)
 
-1. Create a graph of the speed of the apple as function of time.
+In summery, if we consider the density of the earth to be uniform, the equation that governs the gravitational force in the free fall is (see 2:00 in the video):
 
-2. Create a graph of the position as function of time.
+$$F_{\rm gravity} = -G\cdot \sigma \cdot \frac{4}{3} \cdot \pi \cdot m \cdot r$$
 
-3. Calculate the maximum speed that the apple reaches (km/h) and `print` it.
+Where $$G$$ is the gravitational constant with the value of $$G = 6.67408e-11 m^3 / kg / s^2$$; $$\sigma$$ is the density of the earth, which is $$\sigma 5520 g/m^3$$; $$m$$ is the mass of the object that's falling in kilograms; and $$r$$ is the distance of the object to the center of the earth in meters.
 
-4. How long does it take for the apple to be back in the position you let go of it (seconds)? `Print` the answer.
+Or, as the put in the video, everything but $$r$$ is just a bunch of constants. The only thing that changes over time is $$r$$.
 
-## Tips
+If we only consider the force of gravity (and no air drag or any other force), we can write the acceleration of the object:
 
-* Ignore air resistance for this assignment.
+$$
+a = \frac{F}{m} = \frac{F_{\rm gravity}}{m} = \frac{-G\cdot \sigma \cdot \frac{4}{3} \cdot \pi \cdot m \cdot r}{m} \\
+= -G\cdot \sigma \cdot \frac{4}{3} \cdot \pi \cdot r
+$$
 
-* The effective mass of the earth, the mass 'that pulls at you' becomes smaller the closer you get to the center. So: if the earth weighs $$M_{\rm earth}$$ and you traveled 50% of the distance to the center of the earth, earth now only 'weighs' $$\left(\frac{1}{2}\right)^3M_{\rm earth}$$ in Newtons formula.
+In other words, we lose the $$m$$, so we don't need to know the mass of the object. Peter from the video jumping through the hole and our apple will accelerate at the exact same rate.
 
-* Assume earth is a globe with constant density.
+Using this equation above we can simulate the fall through the earth.
 
-## Physical (h)in(d)sight
+## Specification
+Create a file `tunnel.py` and declare a function `simulate_ultimate_free_fall(r_start, dt)` in it. The function has 2 paramaters:
 
-Even though this seems like a difficult problem, it was still possible to solve it with pen and paper. The effective force that is applied to a particle grows linearly as a function of distance to the center of the earth. If a particle from the center of earth ($$x=0$$) moves outward (position $$x=r$$) the following applies:
+- `r_start`: the distance of the apple to the center of the earth. If the apple starts at the surface of the earth, this is `6.38e6` meters.
+- `dt`: the time increment for the simulation
 
-  * The effective gravitational constant grows like $$r^3$$, because the effective mass of the globe that pulls the object grows with $$r^3$$. Ergo: $$F\propto r^3$$.
+The function should run the simulation until the apple has completed a full cycle and is back to it's highest point. (How are you going to detect this? You have to be a bit clever here.)
 
-  * The force itself diminishes with $$1/r^2$$ because the force decreases inversely proportional to the square of the distance. Ergo $$F\propto r^{-2}$$.
-  
-Eventually the force on a particle that continually moves away from the center will decrease linearly with distance. That is exactly the same scenario as with a classical spring for which we do know the equation of motion: [Hooke's law](https://en.wikipedia.org/wiki/Hooke%27s_law).
+The function should return three lists:
 
+- A list of distances: the value $$r$$ at every step of the simulation.
+- A list of speeds: the speed of the apple at every step of the simulation.
+- A list of times: the time value at every step of the simulation.
+
+Using those lists, create a plot. Plot two lines:
+
+- A green line for the distances (using the left y-axis)
+- A blue line for the speeds (using the right y-axis)
+
+## Tip
+
+How do you know when the simulation should stop? It might be tricky to detect when the simulation has completed a full cycle, but don't hardcode this. It will not work to test if the distance $$r$$ is exactly the same as the starting distance, because of small rounding errors will.
+
+But, you can at first just let the simulation run for a long time (let's say 10000 seconds) and plot the results. Observe how the speed and distance change when you complete a cycle and use this information to determine a better stopping condition for the simulation.
 
 ## Testing
 
-	checkpy tunnel
+<!-- checkpy tunnel -->

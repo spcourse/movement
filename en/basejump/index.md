@@ -53,15 +53,17 @@ Create a file `basejump.py` and declare a function `simulate_free_fall(x_start, 
 - `x_end`: the height at which the simulation stops (the base jumper hopefully opens his parachute there)
 - `m`: the mass of the basejumper
 - `xi`: the drag constant $$\xi$$, which for this case is $$0.24$$
-- `dt`: the time increment for the Simulation
+- `dt`: the time increment for the simulation
 
 The function should return two values:
+
 - A list of heights: the `x` position at every step of the simulation
 - A list of times: the time value at every step of the simulation.
 
 Use these lists to plot the height of the base jumper as a function of the time. Plot two lines:
-- A green line for a simulation considering air friction: $$\xi = 0.24$$
-- A blue line for a simulation ignoring air friction: $$\xi = 0$$
+
+- A green line for a simulation considering air friction ($$\xi = 0.24$$)
+- A blue line for a simulation ignoring air friction ($$\xi = 0$$)
 
 ## Testing
 
