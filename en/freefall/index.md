@@ -10,9 +10,14 @@ In summery, if we consider the density of the earth to be uniform, the equation 
 
 $$F_{\rm gravity} = -G\cdot \sigma \cdot \frac{4}{3} \cdot \pi \cdot m \cdot r$$
 
-Where $$G$$ is the gravitational constant with the value of $$G = 6.67408e-11 m^3 / kg / s^2$$; $$\sigma$$ is the density of the earth, which is $$\sigma = 5520 g/m^3$$; $$m$$ is the mass of the object that's falling in kilograms; and $$r$$ is the distance of the object to the center of the earth in meters.
+Where
 
-Or, as they elegantly put it in the video, $$F_{\rm gravity}$ is a just some constant stuff times $$r$$. The only thing that changes over time is $$r$$.
+- $$G$$ is the gravitational constant with the value of $$G = 6.67408e-11 m^3 / kg / s^2$$
+- $$\sigma$$ is the density of the earth, which is $$\sigma = 5520 g/m^3$$
+- $$m$$ is the mass of the object that's falling in kilograms
+- $$r$$ is the distance of the object to the center of the earth in meters
+
+Or, as they elegantly put it in the video, $$F_{\rm gravity}$$ is a just some constant stuff times $$r$$. The only thing that changes over time is $$r$$.
 
 If we only consider the force of gravity (and no air drag or any other force), we can write the acceleration of the object:
 
