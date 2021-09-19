@@ -95,6 +95,4 @@ Is it faster than the Bugatti?
 
 ## Testing
 
-
-
-<!-- checkpy apple -->
+    checkpy apple

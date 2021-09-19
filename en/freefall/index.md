@@ -17,7 +17,7 @@ Where
 - $$m$$ is the mass of the object that's falling in kilograms
 - $$r$$ is the distance of the object to the center of the earth in meters
 
-Or, as they elegantly put it in the video, $$F_{\rm gravity}$$ is a just some constant stuff times $$r$$. The only thing that changes over time is $$r$$.
+Or, as they elegantly put it in the video, $$F_{\rm gravity}$$ is just some constant stuff times $$r$$. The only thing that changes over time is $$r$$.
 
 If we only consider the force of gravity (and no air drag or any other force), we can write the acceleration of the object:
 
@@ -26,7 +26,7 @@ a = \frac{F}{m} = \frac{F_{\rm gravity}}{m} = \frac{-G\cdot \sigma \cdot \frac{4
 = -G\cdot \sigma \cdot \frac{4}{3} \cdot \pi \cdot r
 $$
 
-In other words, we loose the $$m$$. We don't need to know the mass of the object. Peter from the video jumping through the hole and our apple will accelerate at the exact same rate.
+In other words, we loose the $$m$$. We don't need to know the mass of the object. Peter, from the video, jumping through the hole and our apple will accelerate at the exact same rate.
 
 Using this equation for the acceleration, we can simulate the fall through the earth.
 
@@ -57,4 +57,4 @@ But, you can at first just let the simulation run for a long time (let's say 100
 
 ## Testing
 
-<!-- checkpy tunnel -->
+    checkpy tunnel

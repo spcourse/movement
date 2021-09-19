@@ -67,4 +67,4 @@ Use these lists to plot the height of the base jumper as a function of the time.
 
 ## Testing
 
-<!-- checkpy basejump -->
+    checkpy basejump
